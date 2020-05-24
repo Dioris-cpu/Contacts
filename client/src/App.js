@@ -4,11 +4,13 @@ import './App.css';
 import Navbar from '../src/conponets/layouts/Navbar'
 import Home from '../src/conponets/pages/Home'
 import About from '../src/conponets/pages/About'
+import ContactState from './context/contact/ContactState'
 
 
 function App() {
   return (
-    <Router>
+    <ContactState>
+       <Router>
     <Fragment>
       <Navbar/>
       <div className="container">
@@ -19,6 +21,8 @@ function App() {
       </div>
     </Fragment>
     </Router>
+    </ContactState>
+   
   );
 }
 
