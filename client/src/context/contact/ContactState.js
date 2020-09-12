@@ -1,5 +1,5 @@
 import React, { useReducer } from "react"
-import uuid from 'uuid';
+import {v4 as uuidv4} from "uuid"; 
 import ContactContext from './contactContext'
 import contactReducer from './contactReducer'
 import {
@@ -11,6 +11,7 @@ import {
     FILTER_CONTACTS,
     CLEAR_FILTER
 } from '../types'
+import { text } from "express";
 
 const ContactState = props => {
     const initalState = {
@@ -39,7 +40,10 @@ const ContactState = props => {
 
         }
     
-    ]
+    ],
+
+    current: null,
+    // filtered: null
 
 
     };
@@ -47,23 +51,61 @@ const ContactState = props => {
 
 
     // add contact 
+    const addContact = contact => {
+        contact.id = uuidv4();
+        dispatch({ type: ADD_CONTACT, payload: contact })
+
+    };
 
     // delete contact 
+    const deleteContact = id => {
+        dispatch({ type: DELETE_CONTACT, payload: id })
+
+    };
 
     // set current contact
+    const setCurrent = contact => {
+        dispatch({ type: SET_CURRENT, payload: contact })
+
+    };
 
     // clear current contact 
+    const clearCurrent = () => {
+        dispatch({ type: CLEAR_CURRENT })
+
+    };
 
     // update contact 
+    const updateContact = contact => {
+        dispatch({ type: UPDATE_CONTACT, payload: contact })
+
+    };
 
     // filter contacts
+    // const filterContacts = text => {
+    //     dispatch({ type: FILTER_CONTACTS, payload: text })
+
+    // };
 
     // clear filter
+    // const clearFilter = () => {
+    //     dispatch({ type: CLEAR_FILTER })
+
+    // };
+
+
 
     return (
         <ContactContext.Provider
         value={{
-            contacts: state.contacts
+            contacts: state.contacts,
+            current: state.current,
+            addContact,
+            deleteContact,
+            setCurrent,
+            clearCurrent,
+            updateContact
+        
         }}>
            
             { props.children }
@@ -71,5 +113,6 @@ const ContactState = props => {
     )
 }
 
-export default ContactState
+export default ContactState;
+
 
