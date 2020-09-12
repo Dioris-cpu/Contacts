@@ -9,7 +9,7 @@ import ContactState from './context/contact/ContactState'
 
 function App() {
   return (
-    // <ContactState>
+    <ContactState>
        <Router>
     <Fragment>
       <Navbar/>
@@ -21,7 +21,7 @@ function App() {
       </div>
     </Fragment>
     </Router>
-    // </ContactState>
+    </ContactState>
    
   );
 }
