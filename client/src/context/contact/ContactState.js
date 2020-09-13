@@ -11,7 +11,7 @@ import {
     FILTER_CONTACTS,
     CLEAR_FILTER
 } from '../types'
-import { text } from "express";
+// import { text } from "express";
 
 const ContactState = props => {
     const initalState = {
