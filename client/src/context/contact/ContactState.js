@@ -11,7 +11,6 @@ import {
     FILTER_CONTACTS,
     CLEAR_FILTER
 } from '../types'
-// import { text } from "express";
 
 const ContactState = props => {
     const initalState = {
@@ -43,7 +42,7 @@ const ContactState = props => {
     ],
 
     current: null,
-    // filtered: null
+    filtered: null
 
 
     };
@@ -82,16 +81,16 @@ const ContactState = props => {
     };
 
     // filter contacts
-    // const filterContacts = text => {
-    //     dispatch({ type: FILTER_CONTACTS, payload: text })
+    const filterContacts = text => {
+        dispatch({ type: FILTER_CONTACTS, payload: text })
 
-    // };
+    };
 
     // clear filter
-    // const clearFilter = () => {
-    //     dispatch({ type: CLEAR_FILTER })
+    const clearFilter = () => {
+        dispatch({ type: CLEAR_FILTER })
 
-    // };
+    };
 
 
 
@@ -100,11 +99,14 @@ const ContactState = props => {
         value={{
             contacts: state.contacts,
             current: state.current,
+            filtered: state.filtered,
             addContact,
             deleteContact,
             setCurrent,
             clearCurrent,
-            updateContact
+            updateContact,
+            filterContacts,
+            clearFilter
         
         }}>
            
