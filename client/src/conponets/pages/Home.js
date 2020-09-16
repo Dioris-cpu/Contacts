@@ -10,7 +10,7 @@ const Home = () => {
                <ContactForm/>
             </div>
             <div>
-                {/* <ContactFilter/> */}
+                <ContactFilter/>
                 <Contacts/>
             </div>
         </div>
